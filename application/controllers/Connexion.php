@@ -39,7 +39,7 @@ class Connexion extends CI_Controller
             else
             {               
                 $data['erreur'] = $tab['erreur'];
-                //$this->load->view('include/menuHaut', $menu);
+                $this->load->view('include/menu-haut', $menu);
                 $this->load->view('connexion/formulaire', $data);
                 //$this->load->view('include/footer');
             }
