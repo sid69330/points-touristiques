@@ -1,0 +1,36 @@
+<?php
+class Inscription extends CI_Controller 
+{
+	public function __construct()
+        {
+                parent::__construct();
+		$this->load->library('form_validation');
+        }
+
+        public function index()
+        {
+		$this->form_validation->set_rules('pseudo', '"Pseudo"', 'trim|required|is_unique[utilisateur.pseudo]encode_php_tags');
+		$this->form_validation->set_rules('email', '"Email"', 'trim|required|valid_email|is_unique[utilisateur.mail]|encode_php_tags');
+		$this->form_validation->set_rules('mdp', '"Mot de passe"', 'required|encode_php_tags');
+		$this->form_validation->set_rules('mdp2', '"Ressaisir"', 'required|matches[mdp]|encode_php_tags');
+
+		if($this->form_validation->run() == FALSE)
+			$this->load->view('inscription');
+		else
+		{
+			$pseudo = $this->input->post('pseudo');
+			$email = $this->input->post('email');
+			$mdp = hash('sha256', $this->input->post('mdp'));
+
+			$retour = $this->inscription_model->ajoutUtilisateur($pseudo, $mail, $mdp);
+
+			if($retour)
+				Redirect();
+			else
+			{
+				$data['erreur'] = 'Une erreur est survenue pendant l\'inscription.';
+				$this->load->view('inscription', $data);
+			}		
+		}
+        }
+}

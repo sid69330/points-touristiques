@@ -1,0 +1,21 @@
+.titrePage
+{
+	margin-top : 150px;
+	font-style : 18px;
+	padding-bottom : 3px;
+	margin-bottom : 50px;
+	border-bottom : 1px solid yellow;
+}
+
+.bt-jaune
+{
+	background-color : yellow;
+	opacity : 0.5;
+	border : 1px solid #111111;
+	color : black;
+}
+
+.bt-jaune:hover
+{
+	background-color : #EEEE00;
+}
