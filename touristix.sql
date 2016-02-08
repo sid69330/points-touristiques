@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 08 Février 2016 à 15:31
+-- Généré le :  Lun 08 Février 2016 à 16:20
 -- Version du serveur :  5.6.28-0ubuntu0.15.04.1
 -- Version de PHP :  5.6.4-4ubuntu6.4
 
@@ -34,14 +34,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `signin` date NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Contenu de la table `user`
---
-
-INSERT INTO `user` (`id`, `login`, `password`, `mail`, `signin`) VALUES
-(1, 'test1', '0000', '0000@0000.000', '2016-02-08'),
-(2, 'test2', '0000', '1111@1111.111', '2016-02-07');
-
 -- --------------------------------------------------------
 
 --
@@ -56,13 +48,25 @@ CREATE TABLE IF NOT EXISTS `walkthrough` (
   `walkthrough` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Contenu de la table `walkthrough`
---
+-- --------------------------------------------------------
 
-INSERT INTO `walkthrough` (`id`, `name`, `createdat`, `owner`, `walkthrough`) VALUES
-(1, 'test1', '2016-02-08', 1, '12321312312'),
-(2, 'test2', '2016-02-08', 1, '545645465++');
+--
+-- Doublure de structure pour la vue `ways`
+--
+CREATE TABLE IF NOT EXISTS `ways` (
+`login` varchar(30)
+,`mail` varchar(255)
+,`name` varchar(30)
+,`walkthrough` text
+);
+-- --------------------------------------------------------
+
+--
+-- Structure de la vue `ways`
+--
+DROP TABLE IF EXISTS `ways`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ways` AS select `u`.`login` AS `login`,`u`.`mail` AS `mail`,`w`.`name` AS `name`,`w`.`walkthrough` AS `walkthrough` from (`walkthrough` `w` join `user` `u` on((`u`.`id` = `w`.`owner`)));
 
 --
 -- Index pour les tables exportées
