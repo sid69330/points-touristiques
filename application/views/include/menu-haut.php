@@ -7,6 +7,7 @@
 <div class="container-fluid">
 	<nav id="bt-menu" class="bt-menu">
 		<ul style="margin:0;padding:0">
+			<li ><a href="/"><i class="fa fa-home"></i> Accueil</a></li>
 			<?php if($this->session->userdata('connexion')['pseudo'] == false)
 			{
 			?>
