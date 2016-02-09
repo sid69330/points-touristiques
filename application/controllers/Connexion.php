@@ -8,7 +8,7 @@ class Connexion extends CI_Controller
     {
         parent::__construct();
         
-        if($this->session->userdata('connexion')['login'] != false)
+        if($this->session->userdata('connexion')['pseudo'] != false)
             Redirect();
         
         $this->load->library('form_validation');
@@ -18,11 +18,12 @@ class Connexion extends CI_Controller
     public function index()
     {                       
         $this->form_validation->set_rules('pseudo', '"Pseudo"', 'trim|required|encode_php_tags');
-        $this->form_validation->set_rules('mdp', '"Mot de passe"', 'encode_php_tags');
+        $this->form_validation->set_rules('mdp', '"Mot de passe"', 'required|encode_php_tags');
+        $data['connexion_ok'] = $this->session->flashdata('connexion_ok');
 
         if($this->form_validation->run() == FALSE)
         {
-            $this->load->view('connexion');
+            $this->load->view('connexion', $data);
         }
         else
         {
@@ -34,14 +35,13 @@ class Connexion extends CI_Controller
             {
                 $sess_array = array('id'=>$tab['result']->id , 'pseudo'=>$tab['result']->login, 'mail'=>$tab['result']->mail);
                 $this->session->set_userdata('connexion', $sess_array);
-                Redirect($this->input->post('redirect'));
+                $this->session->set_flashdata('connexion_ok', 'Connexion réussie. Bienvenue !');
+                Redirect();
             }
             else
             {               
                 $data['erreur'] = $tab['erreur'];
-                $this->load->view('include/menu-haut', $menu);
                 $this->load->view('connexion', $data);
-                //$this->load->view('include/footer');
             }
         }
     }
