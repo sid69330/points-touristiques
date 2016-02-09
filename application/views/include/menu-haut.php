@@ -42,15 +42,15 @@
 <!-- Modal -->
 <div class="modal fade" id="modalDeconnexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
-    	<div class="modal-content">
-      		<div class="modal-header">
+    	<div class="modal-content" style="background-color:#444444;color:white">
+      		<div class="modal-header" style="border-color:#555555">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         		<h4 class="modal-title" id="myModalLabel">Déconnexion</h4>
       		</div>
       		<div class="modal-body">
         		Êtes-vous sûr de vouloir vous déconnecter ?
       		</div>
-     		 <div class="modal-footer">
+     		 <div class="modal-footer" style="border-color:#555555">
         		<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
         		<a href="/deconnexion" class="btn btn-danger">Se déconnecter</a>
       		</div>
