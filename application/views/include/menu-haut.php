@@ -20,14 +20,15 @@
 			<?php
 				  }
 			?>
-			<li>
-				<select id="cat_menu">
-					<option value="none">Catégorie</option>
-					<?php foreach($categ as $key => $value): ?>
-						<option class="_map_point_clicker" value="<?= $key ?>"><?= $value ?></option>
-					<?php endforeach; ?>
-				</select>
-			</li>
+			
+			<?php 
+				if(isset($categ))
+				{
+					?><li class="titreCatMenu">Catégories</li><?php
+					foreach($categ as $key => $value): ?>
+					<li class="_map_point_clicker" data-value="<?= $key ?>"><a href="#"><?= $value ?></a></li>
+					<?php endforeach; 
+				} 	?>
 		</ul>
 	</nav>
 </div>

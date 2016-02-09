@@ -42,10 +42,10 @@ class Parcours_json
 		foreach($json->features as $key => $value){
 			$return[$i]['type'] = $value->properties->type;
 			$return[$i]['detail'] = $value->properties->type_detail;
-			$return[$i]['nom'] = $value->properties->nom;
-			$return[$i]['adresse'] = $value->properties->adresse;
+			$return[$i]['nom'] = htmlentities($value->properties->nom);
+			$return[$i]['adresse'] = htmlentities($value->properties->adresse);
 			$return[$i]['codepostal'] = $value->properties->codepostal;
-			$return[$i]['commune'] = $value->properties->commune;
+			$return[$i]['commune'] = htmlentities($value->properties->commune);
 			$return[$i]['telephone'] = $value->properties->telephone;
 			$return[$i]['points']['latitude'] = $value->geometry->coordinates[1];
 			$return[$i]['points']['longitude'] = $value->geometry->coordinates[0];
