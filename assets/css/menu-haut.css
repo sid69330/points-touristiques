@@ -45,3 +45,18 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .bt-menu ul:nth-of-type(2) li a{color:transparent;text-align:center;font-size:0px}
 .bt-menu ul li a:before{color:#fff;font-size:24px;-webkit-transition:color 0.2s;transition:color 0.2s}
 .bt-menu ul:first-of-type li a:hover,.bt-menu ul:first-of-type li a:focus,.bt-menu ul li a:hover:before,.bt-menu ul li a:focus:before{color:yellow}
+
+
+/*
+
+ADD DROPDOWN
+
+*/
+
+select{
+	border: none;
+	background: #555555;
+	color: #fff;
+	outline: none;
+	padding: 20px;
+}
