@@ -32,7 +32,7 @@
 					var marker = new google.maps.Marker({
 						position: {lat: <?= $value['points']['latitude'] ?>, lng: <?= $value['points']['longitude'] ?>},
 						map: map,
-						title: 'Click to zoom'
+						title: "<?= $value['nom']; ?>"
 					});
 				
 			<?php endforeach; ?>
