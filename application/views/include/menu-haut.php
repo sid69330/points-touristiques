@@ -15,9 +15,10 @@
 				<li ><a href="/inscription"><i class="fa fa-pencil-square-o"></i> Inscription</a></li>
 			<?php
 			}
-			?>
-			
-			<?php 
+			else { ?>
+				<li ><a href="/"><i class="fa fa-sign-in"></i> Déconnexion</a></li>
+			<?php
+			}
 				if(isset($categ))
 				{
 					?><li class="titreCatMenu">Catégories</li><?php
