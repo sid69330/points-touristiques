@@ -22,7 +22,13 @@
 	<?php include_once($_SERVER['DOCUMENT_ROOT'].'/application/views/include/menu-haut.php'); ?>
 	<div class="container">
 		<h1 class="titrePage">Vos parcours enregistrés</h1>
-		<?php print_r($tab); ?>
+		<?php 
+			foreach($tab as $k => $v)
+			{
+				//print_r($v);
+				echo '<a href="index?' . $k . '">' . $v->name . '</a><br/>';
+			}
+		 ?>
 	</div>
   </body>
 </html>
