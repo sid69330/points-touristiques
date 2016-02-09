@@ -17,8 +17,8 @@ class Connexion extends CI_Controller
     
     public function index()
     {                       
-        $this->form_validation->set_rules('login', '"Pseudo"', 'trim|required|encode_php_tags');
-        $this->form_validation->set_rules('password', '"Mot de passe"', 'encode_php_tags');
+        $this->form_validation->set_rules('pseudo', '"Pseudo"', 'trim|required|encode_php_tags');
+        $this->form_validation->set_rules('mdp', '"Mot de passe"', 'encode_php_tags');
 
         if($this->form_validation->run() == FALSE)
         {
@@ -26,8 +26,8 @@ class Connexion extends CI_Controller
         }
         else
         {
-            $pseudo = $this->input->post('login');
-            $mdp = hash('sha256', $this->input->post('password'));
+            $pseudo = $this->input->post('pseudo');
+            $mdp = hash('sha256', $this->input->post('mdp'));
             $tab = $this->connexion_model->verifierIdentifiant($pseudo, $mdp);
 
             if($tab['erreur'] == '')
