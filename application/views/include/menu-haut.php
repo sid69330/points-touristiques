@@ -16,7 +16,7 @@
 			<?php
 			}
 			else { ?>
-				<li ><a href="/"><i class="fa fa-sign-in"></i> Déconnexion</a></li>
+				<li ><a href="/deconnexion"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 			<?php
 			}
 				if(isset($categ))
