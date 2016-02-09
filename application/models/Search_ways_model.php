@@ -8,17 +8,16 @@ class Connexion_model extends CI_Model
     {
         $tab['erreur'] = '';
         
-        $this->db->select('id, login, password, mail');
-        $this->db->from('user');
-        $this->db->where('password', $mdp);
-        $this->db->where('(mail = "'.$identifiant.'" OR login = "'.$identifiant.'")');
+        $this->db->select('login, mail, name, wakthrough');
+        $this->db->from('ways');
+        $this->db->where('owner', $own);
         $query = $this->db->get();
         
         $nb = $query->num_rows();
         $result = $query->result();
         
         if($nb == 0)
-            $tab['erreur'] = "Identifiant ou mot de passe incorrect.";
+            $tab['erreur'] = "Vous n'avez pas encore créé d'itinéraire";
         
         return $tab;
     }
