@@ -16,6 +16,15 @@
 <div class="container-fluid">
 	<nav id="bt-menu" class="bt-menu">
 		<ul style="margin:0;padding:0">
+			<?php if($this->session->userdata('connexion')['id'] != false)
+			{
+			?>
+				<li id="pseudoConnecteMenuGauche">
+					<i class="fa fa-user"></i> Connecté en tant que <?php echo $this->session->userdata('connexion')['pseudo']; ?>
+				</li>
+			<?php
+			}
+			?>
 			<li ><a href="/"><i class="fa fa-home"></i> Accueil</a></li>
 			<?php if($this->session->userdata('connexion')['id'] == false)
 			{

@@ -59,6 +59,15 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 	font-size : 12px;
 }
 
+#pseudoConnecteMenuGauche
+{
+	color : white;
+	text-align:center;
+	height : auto !important;
+	font-size : 12px;
+	font-style : italic;
+}
+
 /*
 
 ADD DROPDOWN
