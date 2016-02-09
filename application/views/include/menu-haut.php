@@ -9,12 +9,16 @@
 		<ul style="margin:0;padding:0">
 			<li ><a href="/"><i class="fa fa-home"></i> Accueil</a></li>
 			<?php if($this->session->userdata('connexion')['pseudo'] == false)
-			{
+				  {
 			?>
-				<li ><a href="/connexion"><i class="fa fa-sign-in"></i> Connexion</a></li>
-				<li ><a href="/inscription"><i class="fa fa-pencil-square-o"></i> Inscription</a></li>
+					<li ><a href="/connexion"><i class="fa fa-sign-in"></i> Connexion</a></li>
+					<li ><a href="/inscription"><i class="fa fa-pencil-square-o"></i> Inscription</a></li>
 			<?php
-			}
+				  } else {
+			?>
+					<li ><a href="/"><i class="fa fa-sign-in"></i> Déconnexion</a></li>
+			<?php
+				  }
 			?>
 			<li>
 				<select id="cat_menu">
