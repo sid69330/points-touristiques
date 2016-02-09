@@ -48,6 +48,25 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .bt-menu ul:first-of-type li._map_point_clicker.active a,.bt-menu ul:first-of-type li._map_point_clicker.active a:focus,.bt-menu ul li._map_point_clicker.active a:hover:before,.bt-menu ul li._map_point_clicker.active a:focus:before{color:red}
 .bt-menu ul:first-of-type li._map_point_clicker a,.bt-menu ul:first-of-type li._map_point_clicker a:focus,.bt-menu ul li._map_point_clicker a:hover:before,.bt-menu ul li._map_point_clicker a:focus:before{color:#00FF01}
 
+#pseudoConnecte
+{
+	float : right;
+	margin-right : 25px;
+	height : 73px;
+	line-height : 73px;
+	color : white;
+	font-style : italic;
+	font-size : 12px;
+}
+
+#pseudoConnecteMenuGauche
+{
+	color : white;
+	text-align:center;
+	height : auto !important;
+	font-size : 12px;
+	font-style : italic;
+}
 
 /*
 
