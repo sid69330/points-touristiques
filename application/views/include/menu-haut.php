@@ -22,8 +22,8 @@
 				{
 					?><li class="titreCatMenu">Catégories</li><?php
 					foreach($categ as $key => $value): ?>
-					<li class="_map_point_clicker" data-value="<?= $key ?>"><a href="#"><?= $value ?></a></li>
-					<?php endforeach; 
+					<li class="_map_point_clicker" data-value="<?= $key ?>" title="Ajouter les marqueurs <?= $value ?>"><a href="#"><?= $value ?></a></li>
+					<?php endforeach;
 				} 	?>
 		</ul>
 	</nav>
