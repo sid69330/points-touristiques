@@ -1,6 +1,10 @@
+.container
+{
+	margin-top : 120px;
+}
+
 .titrePage
 {
-	margin-top : 150px;
 	font-style : 18px;
 	padding-bottom : 3px;
 	margin-bottom : 50px;
