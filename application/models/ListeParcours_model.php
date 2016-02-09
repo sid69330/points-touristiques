@@ -15,11 +15,10 @@ class ListeParcours_model extends CI_Model
         
         $nb = $query->num_rows();
         $result = $query->result();
-        
         if($nb == 0)
             $tab['erreur'] = "Vous n'avez pas de parcours d'enregistré";
         else
-            $tab['result'] = $result[0];
+            $tab['result'] = $result;
         
         return $tab;
     }
