@@ -14,7 +14,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 #titreSite{display:inline-block;height:76px;margin-left:65px;z-index:999;position:absolute;line-height:70px}
 .barre_menu_haut{background-color:#444444;height:76px;width:100%;position:fixed;z-index:1001;box-shadow:0px 2px 10px #999999;border-bottom:1px solid #AAAAAA;border-bottom:3px solid yellow;}
 .bt-menu{position:fixed;top:0;left:0;width:100%;height:0;border-width:0px;border-style:solid;border-color:#555555;-webkit-backface-visibility:hidden;-webkit-transition:border-width 0.3s, background-color 0.3s, height 0s 0.3s;transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s}
-.bt-menu.bt-menu-open{height:100%;border-width:0px 0px 50px 210px;-webkit-transition:border-width 0.3s, background-color 0.3s;transition:border-width 0.3s, background-color 0.3s;z-index:1000}
+.bt-menu.bt-menu-open{height:100%;border-width:0px 0px 50px 230px;-webkit-transition:border-width 0.3s, background-color 0.3s;transition:border-width 0.3s, background-color 0.3s;z-index:1000}
 .bt-overlay{position:absolute;width:100%}
 .bt-menu-open .bt-overlay{height:100%}
 .bt-menu-trigger{position:fixed;top:10px;left:15px;z-index:1002;display:block;width:40px;height:50px;cursor:pointer}
@@ -31,7 +31,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .bt-menu ul:nth-of-type(2) li{float:left;font-size:0px}
 .bt-menu ul li{visibility:hidden;opacity:0;-webkit-transition:-webkit-transform 0.3s, opacity 0.2s, visibility 0s 0.3s;transition: transform 0.3s, opacity 0.2s, visibility 0s 0.3s}
 .bt-menu.bt-menu-open ul:first-of-type li,.bt-menu.bt-menu-open ul:nth-of-type(2) li{visibility:visible;	opacity:1;-webkit-transition:-webkit-transform 0.3s, opacity 0.3s 0.1s;transition:transform 0.3s, opacity 0.3s}
-.bt-menu ul:first-of-type li{width:210px;height:50px;line-height:50px;-webkit-transform:translate3d(-100%,50%,0);transform:translate3d(-100%,50%,0)}
+.bt-menu ul:first-of-type li{width:230px;height:50px;line-height:50px;-webkit-transform:translate3d(-100%,50%,0);transform:translate3d(-100%,50%,0)}
 .bt-menu.bt-menu-open ul:first-of-type li{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .bt-menu ul:nth-of-type(2) li{width:60px;height:50px;line-height:50px;-webkit-transform:scale(0);transform:scale(0)}
 .bt-menu.bt-menu-open ul:nth-of-type(2) li:first-child{-webkit-transition-delay:0.1s;transition-delay:0.1s}
@@ -45,6 +45,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 .bt-menu ul:nth-of-type(2) li a{color:transparent;text-align:center;font-size:0px}
 .bt-menu ul li a:before{color:#fff;font-size:24px;-webkit-transition:color 0.2s;transition:color 0.2s}
 .bt-menu ul:first-of-type li a:hover,.bt-menu ul:first-of-type li a:focus,.bt-menu ul li a:hover:before,.bt-menu ul li a:focus:before{color:yellow}
+.bt-menu ul:first-of-type li._map_point_clicker.active a,.bt-menu ul:first-of-type li._map_point_clicker.active a:focus,.bt-menu ul li._map_point_clicker.active a:hover:before,.bt-menu ul li._map_point_clicker.active a:focus:before{color:red}
+.bt-menu ul:first-of-type li._map_point_clicker a,.bt-menu ul:first-of-type li._map_point_clicker a:focus,.bt-menu ul li._map_point_clicker a:hover:before,.bt-menu ul li._map_point_clicker a:focus:before{color:#00FF01}
 
 
 /*
