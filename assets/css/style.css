@@ -26,3 +26,23 @@
 	border : 1px solid #111111;
 	color : black;
 }
+
+.titreCatMenu
+{
+	color:white;
+	font-weight:bold;
+	margin-left : 74px;
+}
+
+._map_point_clicker
+{
+	height : 30px !important;
+	line-height : 30px !important;
+	font-size : 12px !important;
+	cursor : pointer;
+}
+
+#bt-menu li.active
+{
+	color : yellow !important;
+}

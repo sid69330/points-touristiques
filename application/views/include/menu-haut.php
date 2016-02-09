@@ -16,6 +16,7 @@
 			<?php
 			}
 			?>
+			<li class="titreCatMenu">Catégories</li>
 			<?php foreach($categ as $key => $value): ?>
 				<li class="_map_point_clicker" data-value="<?= $key ?>"><a><?= $value ?></a></li>
 			<?php endforeach; ?>
