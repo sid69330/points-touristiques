@@ -19,6 +19,8 @@ class Connexion_model extends CI_Model
         
         if($nb == 0)
             $tab['erreur'] = "Identifiant ou mot de passe incorrect.";
+        else
+            $tab['result'] = $result[0];
         
         return $tab;
     }
