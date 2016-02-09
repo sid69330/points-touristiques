@@ -9,10 +9,11 @@
   </head>
   <body>
 	<?php include_once($_SERVER['DOCUMENT_ROOT'].'/application/views/include/menu-haut.php'); ?>
-	
-	<?php if(isset($erreur) && ($erreur != '')) echo '<div class="alert alert-danger">'.$erreur.'</div>'; ?>
 
 	<div class="container">
+
+		<?php if($inscription_ok != '') echo '<div class="alert alert-success">'.$inscription_ok.'</div>'; ?>
+
 		<h1 class="titrePage">Inscription</h1>
 
 		<?php echo form_open('/inscription', array('class'=>'form-horizontal')); ?>
