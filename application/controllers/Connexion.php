@@ -19,11 +19,11 @@ class Connexion extends CI_Controller
     {                       
         $this->form_validation->set_rules('pseudo', '"Pseudo"', 'trim|required|encode_php_tags');
         $this->form_validation->set_rules('mdp', '"Mot de passe"', 'required|encode_php_tags');
-        $data['connexion_ok'] = $this->session->flashdata('connexion_ok');
+        //$data['connexion_ok'] = $this->session->flashdata('connexion_ok');
 
         if($this->form_validation->run() == FALSE)
         {
-            $this->load->view('connexion', $data);
+            $this->load->view('connexion');
         }
         else
         {
@@ -35,7 +35,6 @@ class Connexion extends CI_Controller
             {
                 $sess_array = array('id'=>$tab['result']->id , 'pseudo'=>$tab['result']->login, 'mail'=>$tab['result']->mail);
                 $this->session->set_userdata('connexion', $sess_array);
-                $this->session->set_flashdata('connexion_ok', 'Connexion réussie. Bienvenue !');
                 Redirect();
             }
             else
