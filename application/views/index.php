@@ -20,6 +20,9 @@
   <body>
 	<?php include_once($_SERVER['DOCUMENT_ROOT'].'/application/views/include/menu-haut.php'); ?>
 
+	<?php if($this->session->userdata('connexion')['pseudo'] != false)
+	{
+	?>
 	<div id="constructionParcours">
 		<p onclick="cacherConstructionParcours()">Parcours actuel <span class="badge">0</span><span class="fleche"><i class="fa fa-angle-up"></i></span></p>
 		<ul id="listeConstructionParcours">
@@ -28,7 +31,10 @@
 			<li>Point 3</li>
 		</ul>
 	</div>
-	
+	<?php
+	}
+	?>
+
 	<div id="map"></div>
 	<script src="/assets/js/map.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABmaswDuz7-HVvHoHgrqYdmunESX84x9s&signed_in=true&callback=initMap" async defer></script>
