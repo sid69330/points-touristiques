@@ -25,11 +25,21 @@
 	?>
 	<div id="constructionParcours">
 		<p onclick="cacherConstructionParcours()">Parcours actuel <span class="badge">0</span><span class="fleche"><i class="fa fa-angle-up"></i></span></p>
-		<ul id="listeConstructionParcours">
-			<li>Point 1</li>
-			<li>Point 2</li>
-			<li>Point 3</li>
-		</ul>
+		<div id="blocParcoursSave">
+			<ul id="listeConstructionParcours">
+				<li>Point 1</li>
+				<li>Point 2</li>
+				<li>Point 3</li>
+			</ul>
+			<form id="formSaveParcours" style="width:100%">
+				<div class="col-xs-9" style="margin:0;padding:0">
+					<input type="text" id="nomParcoursSave" name="nomParcoursSave" placeholder="Nom du parcours" style="width:100%;height:25px" disabled="disabled"/>
+				</div>
+				<div class="col-xs-3" style="margin:0;padding:0">
+					<button type="button" id="btSaveParcours" class="btn btn-xs bt-jaune" style="width:100%;height:25px" disabled="disabled">Enregistrer</button>
+				</div>
+			</form>
+		</div>
 	</div>
 	<?php
 	}
