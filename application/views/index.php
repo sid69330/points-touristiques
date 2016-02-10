@@ -36,8 +36,8 @@
 	?>
 
 	<div id="map"></div>
-	<script src="/assets/js/map.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABmaswDuz7-HVvHoHgrqYdmunESX84x9s&signed_in=true&callback=initMap" async defer></script>
+	<script type="text/javascript" src="/assets/js/map.js"></script>
 	<script type="text/javascript" src="/assets/js/jquery-1-11-2.js"></script>
 	<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/assets/js/menu-haut.js"></script>

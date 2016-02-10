@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	get_categ_menu();
+	show_hide_cat();
+	update_point_list();
+
 });
 
 function get_categ_menu(){
@@ -17,4 +20,39 @@ function get_categ_menu(){
 	.fail(function() {
 		console.log("error");
 	});
+}
+
+function show_hide_cat(){
+	if(window.location.pathname != '/'){
+		$('#categ_list').css('display', 'none');
+	}
+}
+
+function add_point_itineraire(id){
+	var point_selector = $('#point_'+id+' .point_name');
+		name = point_selector.html();
+		button = $('#button_'+id);
+
+	if(button.hasClass('remove')){
+		localStorage.removeItem(id);
+		button.removeClass('remove').html('Ajouter');
+	}else{
+		localStorage.setItem(id, name);
+		button.addClass('remove').html('Retirer');
+	}
+
+	update_point_list();
+}
+
+function update_point_list(){
+	var list = $('ul#listeConstructionParcours');
+		badge = $('#constructionParcours .badge');
+
+	list.html('');
+
+	$.each(localStorage, function(index, elem){
+		list.append('<li data-id="'+index+'">'+elem+'</li>');
+	});
+
+	badge.html(localStorage.length);
 }
