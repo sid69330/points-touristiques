@@ -4,6 +4,10 @@ class Inscription extends CI_Controller
 	public function __construct()
     {
         parent::__construct();
+
+        if($this->session->userdata('connexion')['pseudo'] != false)
+            Redirect();
+        
 		$this->load->library('form_validation');
 		$this->load->model('inscription_model');
     }
