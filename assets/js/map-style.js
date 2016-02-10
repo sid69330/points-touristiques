@@ -35,19 +35,19 @@ function cacherConstructionParcours(premierChargement)
 {
 	if(premierChargement)
 	{
-		$("#listeConstructionParcours").hide();
+		$("#blocParcoursSave").hide();
 		$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-up"></i>');
 	}
 	else
 	{
-		if($( "#listeConstructionParcours").is(":hidden"))
+		if($( "#blocParcoursSave").is(":hidden"))
 		{
-			$("#listeConstructionParcours").slideDown("slow");
+			$("#blocParcoursSave").slideDown("slow");
 			$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-down"></i>');
 		}
 		else
 		{
-			$("#listeConstructionParcours").slideUp("slow");
+			$("#blocParcoursSave").slideUp("slow");
 			$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-up"></i>');
 		}
 	}
