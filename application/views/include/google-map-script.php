@@ -96,8 +96,8 @@
 				}else{
 					str_facebook = '';
 				}
-
-				var contentString = "<div class='infowindow_content'><div style='font-weight:bold;color:#08A12B'>"+temp[i]['name']+"</div><div style='font-style:italic;'>"+temp[i]['detail'].replace(';', ', ')+"</div><div>"+temp[i]['adress']+"</div><div>"+temp[i]['zip']+" - "+temp[i]['city']+"</div><div>"+str_phones+"</div><div>"+str_email+"</div><div>"+str_facebook+"</div></div>";
+				var buttonSubmit = "<button data-points='"++"' class='_add_to_itineraire'>Ajouter</button>";
+				var contentString = "<div class='infowindow_content'><div style='font-weight:bold;color:#08A12B'>"+temp[i]['name']+"</div><div style='font-style:italic;'>"+temp[i]['detail'].replace(';', ', ')+"</div><div>"+temp[i]['adress']+"</div><div>"+temp[i]['zip']+" - "+temp[i]['city']+"</div><div>"+str_phones+"</div><div>"+str_email+"</div><div>"+str_facebook+"</div><div>"+buttonSubmit+"</div></div>";
 
 				var infowindow = new google.maps.InfoWindow({
 					content: contentString

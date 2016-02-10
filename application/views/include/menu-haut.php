@@ -32,15 +32,11 @@
 				<li ><a href="/connexion"><i class="fa fa-sign-in"></i> Connexion</a></li>
 				<li ><a href="/inscription"><i class="fa fa-pencil-square-o"></i> Inscription</a></li>
 			<?php
-			}
-			if(isset($categ))
-			{
-				?>
+			} ?>
+
 				<li class="" onclick="cacherMenuCategorie()"><a href="#"><i class="fa fa-folder-open"></i> Catégories <span id="flecheCatMenu" style="float:right;margin-top:5px"></span></a></li>
-				<?php foreach($categ as $key => $value): ?>
-					<li class="_map_point_clicker" data-value="<?= $key ?>" title="Ajouter les marqueurs <?= $value ?>"><a href="#"><?= $value ?></a></li>
-				<?php endforeach;
-			} 	?>
+				<span id="_ajax_load_menu"></span>
+
 			<?php if($this->session->userdata('connexion')['id'] != false)
 			{
 			?>

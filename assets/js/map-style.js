@@ -28,5 +28,4 @@ function cacherMenuCategorie()
 		$('._map_point_clicker').css({'display':'block'});
 		$('#flecheCatMenu').html('<i class="fa fa-angle-up fa-2x"></i>');
 	}
-	console.log('ok');
 }
