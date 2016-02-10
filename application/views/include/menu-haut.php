@@ -71,3 +71,12 @@
     	</div>
   	</div>
 </div>
+
+<div id="constructionParcours">
+	<p onclick="cacherConstructionParcours()">Parcours actuel <span class="badge">0</span><span class="fleche"><i class="fa fa-angle-up"></i></span></p>
+	<ul id="listeConstructionParcours">
+		<li>Point 1</li>
+		<li>Point 2</li>
+		<li>Point 3</li>
+	</ul>
+</div>

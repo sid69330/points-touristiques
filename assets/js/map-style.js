@@ -6,6 +6,7 @@ $(document).ready(function(){
 	});
 
 	cacherMenuCategorie();
+	cacherConstructionParcours();
 });
 
 function map_height(){
@@ -28,5 +29,18 @@ function cacherMenuCategorie()
 		$('._map_point_clicker').css({'display':'block'});
 		$('#flecheCatMenu').html('<i class="fa fa-angle-up fa-2x"></i>');
 	}
-	console.log('ok');
+}
+
+function cacherConstructionParcours()
+{
+	if($('#listeConstructionParcours').css('display') != 'none')
+	{
+		$('#listeConstructionParcours').css({'display':'none'});
+		$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-up"></i>');
+	}
+	else
+	{
+		$('#listeConstructionParcours').css({'display':'block'});
+		$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-down"></i>');
+	}
 }

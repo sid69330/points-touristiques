@@ -81,3 +81,54 @@ select{
 	outline: none;
 	padding: 20px;
 }
+
+#constructionParcours
+{
+	width : 300px;
+	background-color : #444444;
+	position : fixed;
+	right : 0;
+	bottom : 0;
+	z-index : 100000;
+}
+
+#constructionParcours p
+{
+	text-align : center;
+	font-weight : bold;
+	height : 30px;
+	line-height : 30px;
+	border-bottom : 1px solid #555555;
+	color : white;
+	margin : 0;
+	cursor : pointer;
+}
+
+#constructionParcours p span.fleche
+{
+	float : right;
+	margin-right : 20px;
+}
+
+#constructionParcours ul
+{
+	margin : 0;
+	padding : 0;
+}
+
+#constructionParcours ul li
+{
+	list-style-type: none;
+	padding-left : 10px;
+	padding-right : 10px;
+	border-bottom : 1px solid #555555;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	color : white;
+	font-size : 12px;
+}
+
+#constructionParcours p span.badge
+{
+	margin-left : 10px;
+}
