@@ -33,10 +33,6 @@
 				<li ><a href="/inscription"><i class="fa fa-pencil-square-o"></i> Inscription</a></li>
 			<?php
 			}
-			else 
-			{ 
-				?><li ><a href="#" data-toggle="modal" data-target="#modalDeconnexion"><i class="fa fa-sign-out"></i> Déconnexion</a></li><?php
-			}
 			if(isset($categ))
 			{
 				?>
@@ -45,7 +41,14 @@
 					<li class="_map_point_clicker" data-value="<?= $key ?>" title="Ajouter les marqueurs <?= $value ?>"><a href="#"><?= $value ?></a></li>
 				<?php endforeach;
 			} 	?>
-			<li><a href="/listeParcours"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge">0</span></a></li>
+			<?php if($this->session->userdata('connexion')['id'] != false)
+			{
+			?>
+				<li><a href="/listeParcours"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge">0</span></a></li>
+				<li ><a href="#" data-toggle="modal" data-target="#modalDeconnexion"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+			<?php
+			}
+			?>
 		</ul>
 	</nav>
 </div>
