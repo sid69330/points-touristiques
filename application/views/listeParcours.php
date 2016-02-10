@@ -28,11 +28,14 @@
 			}else{
 				foreach($tab['result'] as $k => $v)
 				{
-					//print_r($v);
 					echo '<a href="index?' . $k . '">' . $v->name . '</a><br/>';
 				}
 			}
 		 ?>
 	</div>
+	<script type="text/javascript" src="/assets/js/jquery-1-11-2.js"></script>
+	<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/menu-haut.js"></script>
+	<script src="/assets/js/map-style.js"></script>
   </body>
 </html>
