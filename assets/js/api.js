@@ -3,6 +3,10 @@ $(document).ready(function(){
 	show_hide_cat();
 	update_point_list();
 
+	$('#constructionParcours ul li .remove_point_lm').on('click', function(){
+		add_point_itineraire($(this).parent().data('id'));
+	});
+
 });
 
 function get_categ_menu(){
@@ -51,7 +55,7 @@ function update_point_list(){
 	list.html('');
 
 	$.each(localStorage, function(index, elem){
-		list.append('<li data-id="'+index+'">'+elem+'</li>');
+		list.append('<li data-id="'+index+'">'+elem+'<span class="remove_point_lm"><i class="fa fa-times"></i></span></li>');
 	});
 
 	badge.html(localStorage.length);

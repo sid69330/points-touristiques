@@ -128,6 +128,12 @@ select{
 	font-size : 12px;
 }
 
+#constructionParcours ul li .remove_point_lm{
+	float: right;
+	cursor: pointer;
+	color: #EE3A3A;
+}
+
 #constructionParcours p span.badge
 {
 	margin-left : 10px;
