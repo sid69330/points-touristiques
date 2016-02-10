@@ -19,10 +19,6 @@ class ListeParcours extends CI_Controller
         $id = $this->session->userdata('connexion')['id'];
         $data['tab'] = $this->ListeParcours_model->chercherParcours($id);
 
-        //if ($data['tab1']['erreur'] != '')
-        //    Redirect();
-
-        //print_r($data['tab'][0] -> login);
         $this->load->view('listeParcours', $data);
     }
 }
