@@ -8,8 +8,9 @@ class ListeParcours_model extends CI_Model
     {
         $tab['erreur'] = '';
         
-        $this->db->select('login, mail, name, walkthrough');
-        $this->db->from('ways');
+        $this->db->select('U.login, W.name, W.walkthrough as parcours');
+        $this->db->from('walkthrough W');
+        $this->db->join('user U', 'U.id = W.owner');
         $this->db->where('owner', $identifiant);
         $query = $this->db->get();
         

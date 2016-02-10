@@ -6,7 +6,7 @@
 		center: {lat: 45.764043, lng: 4.835658999999964},
 		zoom: 16
 	  });
-	  var infoWindow = new google.maps.InfoWindow({map: map});
+
 	  var center = {lat: 45.764043, lng: 4.835658999999964};
 
 	  // Try HTML5 geolocation.
@@ -36,8 +36,6 @@
 				});
 
 				map.setCenter(pos);
-			}, function() {
-				handleLocationError(true, infoWindow, map.getCenter());
 			});
 		}else{
 			// Browser doesn't support Geolocation
@@ -49,7 +47,7 @@
 			var <?= $catkey ?> = [
 				<?php foreach($coord as $value): ?>
 					<?php if($catkey === $value['type']): ?>
-						{'mark': new google.maps.LatLng(<?= $value['points']['latitude'] ?>, <?= $value['points']['longitude'] ?>), 'name': "<?= $value['name'] ?>", 'adress': "<?= $value['adress'] ?>", 'zip': "<?= $value['zip'] ?>", 'city': "<?= $value['city'] ?>", 'phone': "<?= $value['phone'] ?>", 'detail': "<?= $value['detail'] ?>"},
+						{'mark': new google.maps.LatLng(<?= $value['points']['latitude'] ?>, <?= $value['points']['longitude'] ?>), 'name': "<?= $value['name'] ?>", 'adress': "<?= $value['adress'] ?>", 'zip': "<?= $value['zip'] ?>", 'city': "<?= $value['city'] ?>", 'phone': "<?= $value['phone'] ?>", 'detail': "<?= $value['detail'] ?>", 'email': "<?= $value['email'] ?>", 'facebook': "<?= $value['facebook'] ?>"},
 					<?php endif; ?>
 				<?php endforeach; ?>
 			];
@@ -79,15 +77,27 @@
 					str_phones = '';
 				$.each(phones, function(key, elem){
 					if(elem.trim().substr(1, 1) == '6' || elem.trim().substr(1, 1) == '7'){
-						str_phones += 'Portable: '+elem+'<br>';
+						str_phones += 'Portable: <a href="tel:'+elem+'">'+elem+'</a><br>';
 					}else if(elem.trim().length > 0){
-						str_phones += 'Téléphone: '+elem+'<br>';
+						str_phones += 'Téléphone: <a href="tel:'+elem+'">'+elem+'</a><br>';
 					}else{
 						str_phones = '';
 					}
 				});
 
-				var contentString = "<div class='infowindow_content'><div style='font-weight:bold;color:#08A12B'>"+temp[i]['name']+"</div><div style='font-style:italic;'>"+temp[i]['detail'].replace(';', ', ')+"</div><div>"+temp[i]['adress']+"</div><div>"+temp[i]['zip']+" - "+temp[i]['city']+"</div><div>"+str_phones+"</div></div>";
+				if(temp[i]['email'].trim() != ''){
+					str_email = 'Email: <a href="mailto:'+temp[i]['email'].trim()+'">'+temp[i]['email'].trim()+'</a><br>';
+				}else{
+					str_email = '';
+				}
+
+				if(temp[i]['facebook'].trim() != ''){
+					str_facebook = '<a href="'+temp[i]['facebook'].trim()+'" target="_blanck"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Lien Facebook</a><br>';
+				}else{
+					str_facebook = '';
+				}
+
+				var contentString = "<div class='infowindow_content'><div style='font-weight:bold;color:#08A12B'>"+temp[i]['name']+"</div><div style='font-style:italic;'>"+temp[i]['detail'].replace(';', ', ')+"</div><div>"+temp[i]['adress']+"</div><div>"+temp[i]['zip']+" - "+temp[i]['city']+"</div><div>"+str_phones+"</div><div>"+str_email+"</div><div>"+str_facebook+"</div></div>";
 
 				var infowindow = new google.maps.InfoWindow({
 					content: contentString

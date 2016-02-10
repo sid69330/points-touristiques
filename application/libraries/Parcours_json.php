@@ -44,6 +44,8 @@ class Parcours_json
 			$return[$i]['detail'] =  utf8_decode(str_replace(["\'", '"'], '', $value->properties->type_detail));
 			$return[$i]['name'] = utf8_decode(str_replace(["\'", '"'], '', $value->properties->nom));
 			$return[$i]['adress'] = utf8_decode(str_replace(["\'", '"'], '', $value->properties->adresse));
+			$return[$i]['email'] = $value->properties->email;
+			$return[$i]['facebook'] = $value->properties->facebook;
 			$return[$i]['zip'] = $value->properties->codepostal;
 			$return[$i]['city'] = utf8_decode(str_replace(["\'", '"'], '', $value->properties->commune));
 			$return[$i]['phone'] = $value->properties->telephone;
