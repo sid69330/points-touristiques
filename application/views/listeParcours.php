@@ -23,10 +23,14 @@
 	<div class="container">
 		<h1 class="titrePage">Vos parcours enregistrés</h1>
 		<?php 
-			foreach($tab as $k => $v)
-			{
-				//print_r($v);
-				echo '<a href="index?' . $k . '">' . $v->name . '</a><br/>';
+			if ($tab['erreur'] != ''){
+				echo $tab['erreur'];
+			}else{
+				foreach($tab['result'] as $k => $v)
+				{
+					//print_r($v);
+					echo '<a href="index?' . $k . '">' . $v->name . '</a><br/>';
+				}
 			}
 		 ?>
 	</div>
