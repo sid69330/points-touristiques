@@ -66,3 +66,9 @@
 	border: 1px solid #E69E9E;
 	background: #DE4040;
 }
+
+p#MaxPointLabel{
+	display: none;
+	color: #fff;
+	background: #F73838;
+}
