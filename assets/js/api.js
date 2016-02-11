@@ -11,6 +11,7 @@ $(document).ready(function(){
 	});
 
 	cacherMenuCategorie();
+	cacherParcours();
 	cacherConstructionParcours(true);
 
 	$('#constructionParcours ul#listeConstructionParcours').on('click', '.remove_point_lm', function(){
@@ -53,6 +54,44 @@ $(document).ready(function(){
 			}
 		});
 
+	});
+
+	$('#_ajax_load_parcours').on('click', '._map_point_parcours_update', function(){
+		var points = [];
+			start = window['center'];
+			$this = $(this);
+			span = $this.children('span');
+			console.log(span);
+
+		$(span).each(function(index, elem){
+			var lat = $(this).data('latitude');
+				lon = $(this).data('longitude');
+
+			if(index+1 != span.length){
+				points.push({
+					location: new google.maps.LatLng(lat, lon),
+					stopover: true
+				});
+			}
+
+		});
+		console.log(JSON.parse(localStorage.getItem(idLast)).lat);
+		console.log(JSON.parse(localStorage.getItem(idLast)).lon);
+
+		window['directionsService'].route({
+			origin: window['center'],
+			destination: new google.maps.LatLng(JSON.parse(localStorage.getItem(idLast)).lat, JSON.parse(localStorage.getItem(idLast)).lon),
+			waypoints: points,
+			optimizeWaypoints: true,
+			travelMode: google.maps.TravelMode.DRIVING
+		}, function(response, status) {
+			if (status === google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);
+				
+			}else{
+			  console.log(response, status);
+			}
+		});
 	});
 
 	$('#formSaveParcours').submit(function(e){
@@ -109,8 +148,15 @@ function get_parcours(){
 		var menu = $('#_ajax_load_parcours');
 		$('#MyParcours .badge').html(data.nbParcours);
 		$.each(data.result, function(key, elem){
-			var arr = 
-			menu.append('<li class="_map_point_parcours_update" data-value="'+JSON.stringify({"name": elem.name, "lat": elem.latitude, "lon": elem.longitude})+'"><a href="#">'+elem.name+'</a></li>');
+			var arr = JSON.parse(elem.parcours);
+			console.log(arr);
+			menu.append('<li data-name="'+elem.name+'" class="_map_point_parcours_update" id="parcoursList'+elem.name+'" style="display:none;">');
+
+			$.each(arr, function(a, b){
+				$('li#parcoursList'+elem.name).append('<span data-id="'+b.id+'" data-latitude="'+b.latitude+'" data-longitude="'+b.longitude+'" style="display:none;"></span>');
+			})
+
+			$('li#parcoursList'+elem.name).append('<a href="#" style="color:#59AEE4;">'+elem.name+'</a></li>');
 		});
 	})
 	.fail(function() {
@@ -202,6 +248,20 @@ function cacherMenuCategorie()
 	{
 		$('._map_point_clicker').css({'display':'block'});
 		$('#flecheCatMenu').html('<i class="fa fa-angle-up fa-2x"></i>');
+	}
+}
+
+function cacherParcours()
+{
+	if($('._map_point_parcours_update').css('display') != 'none')
+	{
+		$('._map_point_parcours_update').css({'display':'none'});
+		$('#flecheCatParcours').html('<i class="fa fa-angle-down fa-2x"></i>');
+	}
+	else
+	{
+		$('._map_point_parcours_update').css({'display':'block'});
+		$('#flecheCatParcours').html('<i class="fa fa-angle-up fa-2x"></i>');
 	}
 }
 

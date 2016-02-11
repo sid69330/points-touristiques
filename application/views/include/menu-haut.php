@@ -40,7 +40,7 @@
 			<?php if($this->session->userdata('connexion')['id'] != false)
 			{
 			?>
-				<li id="MyParcours"><a href="#"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge"></span><span id="flecheCatParcours" style="float:right;clear:both;"><i class="fa fa-angle-down fa-2x"></i></span></a></li>
+				<li id="MyParcours" onclick="cacherParcours()"><a href="#"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge"></span><span id="flecheCatParcours" style="float:right;clear:both;"><i class="fa fa-angle-down fa-2x"></i></span></a></li>
 				<span id="_ajax_load_parcours"></span>
 				<?php if(uri_string() == '') { ?>
 					<li id="parcours_favori" class=""><a href="#"><i class="fa fa-star"></i> Favoris <span class="badge"><?php echo $nbParcoursFavori; ?></span></a></li>
