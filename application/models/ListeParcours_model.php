@@ -11,6 +11,7 @@ class ListeParcours_model extends CI_Model
         $this->db->from('walkthrough W');
         $this->db->join('user U', 'U.id = W.owner');
         $this->db->where('owner', $identifiant);
+        $this->db->order_by('id', 'desc');
         
         return $this->db->get()->result();
     }

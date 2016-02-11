@@ -72,13 +72,11 @@ $(document).ready(function(){
 			data: {points:JSON.stringify(idPoints), libelle:libelle},
 		}).done(function(data){
 			if(data == 0)
-				alert('Parcours enregistré avec succès');
+				document.location.href = '/listeParcours';
 		})
 		.fail(function() {
 			console.log("error");
 		});
-		
-		console.log(idPoints);
 	});
 
 });

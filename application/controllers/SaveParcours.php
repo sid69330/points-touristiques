@@ -2,15 +2,21 @@
 
 class SaveParcours extends CI_Controller
 {
-
 	public function __construct(){
 		parent::__construct();
-		//$this->load->library('Parcours_json');
 	}
 
+	/*
+		Fonction permettant l'enregistrement d'un parcours
+		IN : 
+			- POST : tableau d'incide de points au format JSON
+			- POST : nom du parcours que l'on souhaite enregistrer
+		RETOUR : string ;
+			- -1 si erreur
+			- 0 si enregistrement OK
+	*/
 	public function index()
 	{
-
 		$jsonPath = $_SERVER['DOCUMENT_ROOT'].'/assets/json/data.json';
 		if(file_exists($jsonPath))
 			$json = json_decode(file_get_contents($jsonPath));
@@ -20,15 +26,17 @@ class SaveParcours extends CI_Controller
 			exit;
 		}
 		
-		$return = array();
-		$i = 0;
-		$tabPoints = array();
-		$points = json_decode($_POST['points']);
+		$return = array(); //Tableau de retour
+		$i = 0; //indice pour boucle
+		$tabPoints = array(); //Contiendra les ID des points que l'on souhaite récupérer des informations dans le JSON global en format tableau PHP
+		$points = json_decode($_POST['points']); //Conetient les points du parcours que l'on souhaite enregistrer
 		
 		foreach($points as $key => $value)
 		{
 			array_push($tabPoints, $value->id);
 		}
+
+		//Parcours du JSON global pour récupérer les informations utiles des points de notre parcours
 		foreach($json->features as $key => $value)
 		{
 			if(in_array($value->properties->id, $tabPoints))
@@ -48,6 +56,8 @@ class SaveParcours extends CI_Controller
 				$i++;
 			}
 		}
+
+		//Enregistrement en base de données
 		if(count($return) > 0)
 		{
 			$data = array(
