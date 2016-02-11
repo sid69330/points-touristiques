@@ -3,6 +3,7 @@ $(document).ready(function(){
 	show_hide_cat();
 	update_point_list();
 	map_height();
+	show_err_max_points();
 
 	$(window, document).on('resize', function(){
 		map_height();
@@ -12,7 +13,6 @@ $(document).ready(function(){
 	cacherConstructionParcours(true);
 
 	$('#constructionParcours ul#listeConstructionParcours').on('click', '.remove_point_lm', function(){
-		console.log($(this).parent().data('id'));
 		add_point_itineraire($(this).parent().data('id'), true);
 	});
 
@@ -49,13 +49,21 @@ function add_point_itineraire(id, list){
 	if(list){
 		localStorage.removeItem(id);
 		update_point_list();
+		show_err_max_points();
 		return;
 	}
 
 	if(button.hasClass('remove')){
 		localStorage.removeItem(id);
 		button.removeClass('remove').html('Ajouter');
+		show_err_max_points();
 	}else{
+		if(localStorage.length == 9){
+			$('#MaxPointLabel').css('display', 'block');
+			return;
+		}else{
+			$('#MaxPointLabel').css('display', 'none');
+		}
 		localStorage.setItem(id, name);
 		button.addClass('remove').html('Retirer');
 	}
@@ -76,6 +84,12 @@ function update_point_list(){
 	});
 
 	badge.html(localStorage.length);
+
+	if(localStorage.length > 0){
+		$('#btPrevisualiserItineraire, #nomParcoursSave, #btSaveParcours').removeAttr('disabled');
+	}else{
+		$('#btPrevisualiserItineraire, #nomParcoursSave, #btSaveParcours').attr('disabled', 'disabled');
+	}
 }
 
 function map_height(){
@@ -119,5 +133,13 @@ function cacherConstructionParcours(premierChargement)
 			$("#blocParcoursSave").slideUp("slow");
 			$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-up"></i>');
 		}
+	}
+}
+
+function show_err_max_points(){
+	if(localStorage.length == 9){
+		$('#MaxPointLabel').css('display', 'block');
+	}else{
+		$('#MaxPointLabel').css('display', 'none');
 	}
 }

@@ -23,6 +23,7 @@
 	{
 	?>
 	<div id="constructionParcours">
+		<p id="MaxPointLabel"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;Nombre Max de points atteint</p>
 		<p onclick="cacherConstructionParcours()">Parcours actuel <span class="badge">0</span><span class="fleche"><i class="fa fa-angle-up"></i></span></p>
 		<div id="blocParcoursSave">
 			<ul id="listeConstructionParcours">
