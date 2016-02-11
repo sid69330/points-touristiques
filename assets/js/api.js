@@ -71,7 +71,8 @@ $(document).ready(function(){
 			dataType: 'json',
 			data: {points:JSON.stringify(idPoints), libelle:libelle},
 		}).done(function(data){
-			console.log(data);
+			if(data == 0)
+				alert('Parcours enregistré avec succès');
 		})
 		.fail(function() {
 			console.log("error");
