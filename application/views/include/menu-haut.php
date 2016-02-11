@@ -40,10 +40,10 @@
 			<?php if($this->session->userdata('connexion')['id'] != false)
 			{
 			?>
+				<li><a href="/listeParcours"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge"><?php if(isset($nbParcours)) echo $nbParcours; ?></span></a></li>
 				<?php if(uri_string() == '') { ?>
 					<li id="parcours_favori" class=""><a href="#"><i class="fa fa-star"></i> Favoris <span class="badge"><?php echo $nbParcoursFavori; ?></span></a></li>
 				<?php } ?>
-				<li><a href="/listeParcours"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge"><?php if(isset($nbParcours)) echo $nbParcours; ?></span></a></li>
 				<li ><a href="#" data-toggle="modal" data-target="#modalDeconnexion"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 			<?php
 			}
