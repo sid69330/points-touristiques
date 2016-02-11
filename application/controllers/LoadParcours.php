@@ -1,22 +1,26 @@
 <?php
 
-class SaveParcours extends CI_Controller
-{
+class LoadParcours extends CI_Controller
+{   
+    protected $menuOnglet;
 
-	public function __construct(){
-		parent::__construct();
-		//$this->load->library('Parcours_json');
-	}
+    public function __construct()
+    {
+        parent::__construct();
+        
+        if($this->session->userdata('connexion')['pseudo'] == false)
+            Redirect();
+        
+        $this->load->library('favori_parcours');
+        $this->load->model('listeParcours_model');
+    }
+    
+    public function index()
+    {  
+        $id = $this->session->userdata('connexion')['id'];
+        $data['result'] = $this->listeParcours_model->chercherParcours($id);
+        $data['nbParcours'] = $this->favori_parcours->recup_nb_parcours($this->session->userdata('connexion')['id']);
 
-	public function index()
-	{
-		$a = json_decode($_POST['points']);
-		$b = [];
-		// var_dump($a);
-		foreach ($a as $key => $value) {
-			$b[] = $value;
-		}
-	}
+        echo json_encode($data);
+    }
 }
-
-?>

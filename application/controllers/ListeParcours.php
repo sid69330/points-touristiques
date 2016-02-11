@@ -21,6 +21,6 @@ class ListeParcours extends CI_Controller
         $data['result'] = $this->listeParcours_model->chercherParcours($id);
         $data['nbParcours'] = $this->favori_parcours->recup_nb_parcours($this->session->userdata('connexion')['id']);
 
-        echo json_encode($data);
+        $this->load->view('listeParcours', $data);
     }
 }

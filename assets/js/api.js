@@ -4,6 +4,7 @@ $(document).ready(function(){
 	update_point_list();
 	map_height();
 	show_err_max_points();
+	get_parcours();
 
 	$(window, document).on('resize', function(){
 		map_height();
@@ -99,6 +100,26 @@ function get_categ_menu(){
 		console.log("error");
 	});
 }
+
+function get_parcours(){
+	$.ajax({
+		url: '/LoadParcours',
+		type: 'GET',
+		dataType: 'json',
+		data: {},
+	}).done(function(data){
+		var menu = $('#_ajax_load_parcours');
+		$('#MyParcours .badge').html(data.nbParcours);
+		$.each(data.result, function(key, elem){
+			var arr = 
+			menu.append('<li class="_map_point_parcours_update" data-value="'+JSON.stringify({"name": elem.name, "lat": elem.latitude, "lon": elem.longitude})+'"><a href="#">'+elem.name+'</a></li>');
+		});
+	})
+	.fail(function() {
+		console.log("error");
+	});
+}
+
 
 function show_hide_cat(){
 	if(window.location.pathname != '/'){
