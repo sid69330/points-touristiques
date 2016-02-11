@@ -2,7 +2,6 @@
 
 class ListeParcours_model extends CI_Model
 {   
-    
     public function chercherParcours($identifiant)
     {
         $tab['erreur'] = '';
