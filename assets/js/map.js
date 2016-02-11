@@ -1,19 +1,26 @@
 	var markers = [];
 
 	function initMap() {
-		var directionsService = new google.maps.DirectionsService;
-		var directionsDisplay = new google.maps.DirectionsRenderer;
 		var map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: 45.764043, lng: 4.835658999999964},
 			zoom: 16
 		});
+
+		var directionsService = new google.maps.DirectionsService;
+		 var directionsDisplay = new google.maps.DirectionsRenderer({
+			    draggable: true,
+			    map: map
+			  });
+
+		directionsDisplay.addListener('directions_changed', function() {
+    computeTotalDistance(directionsDisplay.getDirections());
+  });
 
 	  window['map'] = map;
 	  window['directionsService'] = directionsService;
 	  window['directionsDisplay'] = directionsDisplay;
 
 	  var center = {lat: 45.764043, lng: 4.835658999999964};
-	  window['center'] = center;
 
 	  // Try HTML5 geolocation.
 		if (navigator.geolocation){
@@ -22,6 +29,8 @@
 					lat: position.coords.latitude,
 					lng: position.coords.longitude
 				};
+
+	  			window['center'] = pos;
 
 				var pinColor = "498BFF";
 				var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|" + pinColor,

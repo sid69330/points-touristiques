@@ -19,41 +19,36 @@ $(document).ready(function(){
 	$('#btPrevisualiserItineraire').click(function(){
 		var points = [];
 			start = window['center'];
-			id = $('#listeConstructionParcours').data('lastAdd');
+			idLast = sessionStorage.getItem('lastAdd');
 
 		$.each(localStorage, function(index, elem){
-			var lat = button = $('#point_'+index).data('latitude');
-				lon = button = $('#point_'+index).data('longitude');
-			if($.isNumeric(index) && index != $('#listeConstructionParcours').data('lastAdd')){
+			var lat = JSON.parse(elem).lat;
+				lon = JSON.parse(elem).lon;
+
+			if($.isNumeric(index) && index != idLast){
+
 				points.push({
 					location: new google.maps.LatLng(lat, lon),
 					stopover: true
 				});
+
 			}
 		});
+		console.log(JSON.parse(localStorage.getItem(idLast)).lat);
+		console.log(JSON.parse(localStorage.getItem(idLast)).lon);
 
 		window['directionsService'].route({
 			origin: window['center'],
-			destination: new google.maps.LatLng($('#point_'+id).data('latitude'), $('#point_'+id).data('longitude')),
+			destination: new google.maps.LatLng(JSON.parse(localStorage.getItem(idLast)).lat, JSON.parse(localStorage.getItem(idLast)).lon),
 			waypoints: points,
 			optimizeWaypoints: true,
 			travelMode: google.maps.TravelMode.DRIVING
 		}, function(response, status) {
 			if (status === google.maps.DirectionsStatus.OK) {
 				directionsDisplay.setDirections(response);
-				var route = response.routes[0];
-				var summaryPanel = document.getElementById('directions-panel');
-				summaryPanel.innerHTML = '';
-				// For each route, display summary information.
-				for (var i = 0; i < route.legs.length; i++) {
-					var routeSegment = i + 1;
-					summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +'</b><br>';
-					summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-					summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-					summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-			  	}
+				
 			}else{
-			  window.alert('Directions request failed due to ' + status);
+			  console.log(response, status);
 			}
 		});
 
@@ -85,9 +80,11 @@ function show_hide_cat(){
 }
 
 function add_point_itineraire(id, list){
-	var point_selector = $('#point_'+id+' .point_name');
+	var point = $('#point_'+id);
+		point_selector = $('#point_'+id+' .point_name');
 		name = point_selector.html();
 		button = $('#button_'+id);
+
 
 	if(list){
 		localStorage.removeItem(id);
@@ -107,9 +104,13 @@ function add_point_itineraire(id, list){
 		}else{
 			$('#MaxPointLabel').css('display', 'none');
 		}
-		localStorage.setItem(id, name);
+		var arr = JSON.stringify({"name": name, "lat": point.data('latitude'), 'lon': point.data('longitude')});
+		localStorage.setItem(id, arr);
 		button.addClass('remove').html('Retirer');
-		$('#listeConstructionParcours').data('lastAdd', id);
+		sessionStorage.setItem('lastAdd', id);
+		if($( "#blocParcoursSave").is(":hidden")){
+			cacherConstructionParcours();
+		}
 	}
 
 	update_point_list();
@@ -123,7 +124,7 @@ function update_point_list(){
 
 	$.each(localStorage, function(index, elem){
 		if($.isNumeric(index)){
-			list.append('<li data-id="'+index+'">'+elem+'<span class="remove_point_lm"><i class="fa fa-times"></i></span></li>');
+			list.append('<li data-latitude="'+JSON.parse(elem).lat+'" data-longitude="'+JSON.parse(elem).lon+'" data-id="'+index+'">'+JSON.parse(elem).name+'<span class="remove_point_lm"><i class="fa fa-times"></i></span></li>');
 		}
 	});
 
