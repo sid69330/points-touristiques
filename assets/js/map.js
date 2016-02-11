@@ -1,14 +1,19 @@
 	var markers = [];
 
 	function initMap() {
-	  var map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 45.764043, lng: 4.835658999999964},
-		zoom: 16
-	  });
+		var directionsService = new google.maps.DirectionsService;
+		var directionsDisplay = new google.maps.DirectionsRenderer;
+		var map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: 45.764043, lng: 4.835658999999964},
+			zoom: 16
+		});
 
 	  window['map'] = map;
+	  window['directionsService'] = directionsService;
+	  window['directionsDisplay'] = directionsDisplay;
 
 	  var center = {lat: 45.764043, lng: 4.835658999999964};
+	  window['center'] = center;
 
 	  // Try HTML5 geolocation.
 		if (navigator.geolocation){
