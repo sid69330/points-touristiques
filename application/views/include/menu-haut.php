@@ -15,7 +15,7 @@
 </div>
 <div class="container-fluid">
 	<nav id="bt-menu" class="bt-menu">
-		<ul style="margin:0;padding:0">
+		<ul style="margin:0;padding:0;height:100%;overflow:auto;">
 			<?php if($this->session->userdata('connexion')['id'] != false)
 			{
 			?>
