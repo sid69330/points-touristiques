@@ -3,10 +3,6 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Parcours_json
 {
-	// public function __construct($params){
-
-	// }
-
 	public function get_categ(){
 		$categs = [];
 		$return = [];
