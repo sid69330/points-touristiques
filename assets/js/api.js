@@ -54,6 +54,32 @@ $(document).ready(function(){
 
 	});
 
+	$('#formSaveParcours').submit(function(e){
+		e.preventDefault();
+		var idPoints = [];
+		var libelle = $('#nomParcoursSave').val();
+
+		$('#listeConstructionParcours li').each(function(){
+			idPoints.push({
+				id:$(this).data('id')
+			})
+		});
+
+		$.ajax({
+			url: '/SaveParcours',
+			type: 'POST',
+			dataType: 'json',
+			data: {points:JSON.stringify(idPoints), libelle:libelle},
+		}).done(function(data){
+			console.log(data);
+		})
+		.fail(function() {
+			console.log("error");
+		});
+		
+		console.log(idPoints);
+	});
+
 });
 
 function get_categ_menu(){

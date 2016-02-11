@@ -34,7 +34,7 @@
 					<input type="text" id="nomParcoursSave" name="nomParcoursSave" placeholder="Nom du parcours" style="width:100%;height:25px" disabled="disabled"/>
 				</div>
 				<div class="col-xs-3" style="margin:0;padding:0">
-					<button type="button" id="btSaveParcours" class="btn btn-xs bt-jaune" style="width:100%;height:25px" disabled="disabled">Enregistrer</button>
+					<button type="submit" id="btSaveParcours" class="btn btn-xs bt-jaune" style="width:100%;height:25px" disabled="disabled">Enregistrer</button>
 				</div>
 			</form>
 		</div>
