@@ -2,6 +2,14 @@ $(document).ready(function(){
 	get_categ_menu();
 	show_hide_cat();
 	update_point_list();
+	map_height();
+
+	$(window, document).on('resize', function(){
+		map_height();
+	});
+
+	cacherMenuCategorie();
+	cacherConstructionParcours(true);
 
 	$('#constructionParcours ul li .remove_point_lm').on('click', function(){
 		add_point_itineraire($(this).parent().data('id'));
@@ -59,4 +67,48 @@ function update_point_list(){
 	});
 
 	badge.html(localStorage.length);
+}
+
+function map_height(){
+	var WindowHeight = $(window).height();
+		MenuHeight = $('#barre_menu_haut').height();
+		MapHeight = WindowHeight - MenuHeight;
+
+	$('#map').css({'margin': MenuHeight+'px 0px 0px 0px', 'height': MapHeight+'px'});
+}
+
+function cacherMenuCategorie()
+{
+	if($('._map_point_clicker').css('display') != 'none')
+	{
+		$('._map_point_clicker').css({'display':'none'});
+		$('#flecheCatMenu').html('<i class="fa fa-angle-down fa-2x"></i>');
+	}
+	else
+	{
+		$('._map_point_clicker').css({'display':'block'});
+		$('#flecheCatMenu').html('<i class="fa fa-angle-up fa-2x"></i>');
+	}
+}
+
+function cacherConstructionParcours(premierChargement)
+{
+	if(premierChargement)
+	{
+		$("#blocParcoursSave").hide();
+		$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-up"></i>');
+	}
+	else
+	{
+		if($( "#blocParcoursSave").is(":hidden"))
+		{
+			$("#blocParcoursSave").slideDown("slow");
+			$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-down"></i>');
+		}
+		else
+		{
+			$("#blocParcoursSave").slideUp("slow");
+			$('#constructionParcours p span.fleche').html('<i class="fa fa-angle-up"></i>');
+		}
+	}
 }

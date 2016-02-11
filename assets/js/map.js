@@ -6,6 +6,8 @@
 		zoom: 16
 	  });
 
+	  window['map'] = map;
+
 	  var center = {lat: 45.764043, lng: 4.835658999999964};
 
 	  // Try HTML5 geolocation.
@@ -45,7 +47,7 @@
 		get_categorie_mark();
 			
 
-		$('._map_point_clicker').on('click', function(){
+		$('#_ajax_load_menu').on('click', '._map_point_clicker', function(){
 			var type = $(this).data('value');
 
 			$(this).toggleClass('active');
@@ -106,7 +108,7 @@
 				});
 				
 				var marker = new google.maps.Marker({
-					map: map,
+					map: window['map'],
 					info: contentString,
 					position: temp[i]['mark']
 				});
