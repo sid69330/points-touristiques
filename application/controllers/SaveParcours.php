@@ -42,17 +42,8 @@ class SaveParcours extends CI_Controller
 			if(in_array($value->properties->id, $tabPoints))
 			{
 				$return[$i]['id'] = $value->properties->id;
-				$return[$i]['type'] = $value->properties->type;
-				$return[$i]['detail'] =  str_replace(["\'", '"'], '', $value->properties->type_detail);
-				$return[$i]['name'] = str_replace(["\'", '"'], '', $value->properties->nom);
-				$return[$i]['adress'] = str_replace(["\'", '"'], '', $value->properties->adresse);
-				$return[$i]['email'] = $value->properties->email;
-				$return[$i]['facebook'] = $value->properties->facebook;
-				$return[$i]['zip'] = $value->properties->codepostal;
-				$return[$i]['city'] = str_replace(["\'", '"'], '', $value->properties->commune);
-				$return[$i]['phone'] = $value->properties->telephone;
-				$return[$i]['points']['latitude'] = $value->geometry->coordinates[1];
-				$return[$i]['points']['longitude'] = $value->geometry->coordinates[0];
+				$return[$i]['latitude'] = $value->geometry->coordinates[1];
+				$return[$i]['longitude'] = $value->geometry->coordinates[0];
 				$i++;
 			}
 		}
