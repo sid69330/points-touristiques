@@ -2,13 +2,12 @@
 
 class ListeParcours_model extends CI_Model
 {   
-    //----------------------- Page connexion -----------------------
     
     public function chercherParcours($identifiant)
     {
         $tab['erreur'] = '';
         
-        $this->db->select('U.login, W.name, W.walkthrough as parcours');
+        $this->db->select('W.id, U.login, W.name, W.walkthrough as parcours, W.favorite');
         $this->db->from('walkthrough W');
         $this->db->join('user U', 'U.id = W.owner');
         $this->db->where('owner', $identifiant);
