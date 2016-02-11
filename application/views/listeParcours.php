@@ -6,6 +6,26 @@
 	<meta charset="utf-8">
 	<?php include_once($_SERVER['DOCUMENT_ROOT'].'/application/views/include/include_css.php'); ?>
 	<script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
+	
+		<script type="text/javascript">
+		function favorite(id){
+			var csrfname = "<?php echo $this->security->get_csrf_token_name(); ?>";
+        	var csrftoken = "<?php echo $this->security->get_csrf_hash();?>";
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', '/Createfav');
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send('parcours=' + id + '&'+csrfname+'='+ csrftoken);
+			xhr.onreadystatechange = function(){
+				 if (xhr.readyState === 4 && xhr.status === 200 || xhr.status === 0){
+				 	var img='etoile_favori_'+id;
+				 	var img_name="img/etoile_"+xhr.responseText+'.png';
+				 	document.getElementById(img).src=img_name;
+				 }
+			}
+		}
+	</script>
+
+
 	<style>
 	  html, body {
 		height: 100%;
@@ -28,7 +48,8 @@
 			}else{
 				foreach($tab['result'] as $k => $v)
 				{
-					echo '<a href="index?' . $k . '">' . $v->name . '</a><br/>';
+					$img=$v->favorite?'jaune':'blanche';
+					echo '<img onclick = "favorite(\'' . $v->id . '\');" src="img/etoile_' . $img . '.png" id="etoile_favori_' . $v->id . '" />' . $v->name . '<br/>';
 				}
 			}
 		 ?>
