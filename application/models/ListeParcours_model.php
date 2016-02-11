@@ -11,15 +11,7 @@ class ListeParcours_model extends CI_Model
         $this->db->from('walkthrough W');
         $this->db->join('user U', 'U.id = W.owner');
         $this->db->where('owner', $identifiant);
-        $query = $this->db->get();
         
-        $nb = $query->num_rows();
-        $result = $query->result();
-        if($nb == 0)
-            $tab['erreur'] = "Vous n'avez pas de parcours d'enregistré";
-        else
-            $tab['result'] = $result;
-        
-        return $tab;
+        return $this->db->get()->result();
     }
 }

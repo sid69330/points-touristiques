@@ -12,13 +12,13 @@ class ListeParcours extends CI_Controller
             Redirect();
         
         $this->load->library('favori_parcours');
-        $this->load->model('ListeParcours_model');
+        $this->load->model('listeParcours_model');
     }
     
     public function index()
     {  
         $id = $this->session->userdata('connexion')['id'];
-        $data['tab'] = $this->ListeParcours_model->chercherParcours($id);
+        $data['result'] = $this->listeParcours_model->chercherParcours($id);
         $data['nbParcours'] = $this->favori_parcours->recup_nb_parcours($this->session->userdata('connexion')['id']);
 
         $this->load->view('listeParcours', $data);
