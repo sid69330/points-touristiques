@@ -27,6 +27,7 @@
 		<div id="blocParcoursSave">
 			<ul id="listeConstructionParcours">
 			</ul>
+			<button class="btn btn-block btn-info btn-xs" disabled="disabled" id="btPrevisualiserItineraire">Prévisualiser l'itinéraire</button>
 			<form id="formSaveParcours" style="width:100%">
 				<div class="col-xs-9" style="margin:0;padding:0">
 					<input type="text" id="nomParcoursSave" name="nomParcoursSave" placeholder="Nom du parcours" style="width:100%;height:25px" disabled="disabled"/>
