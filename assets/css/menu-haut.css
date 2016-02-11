@@ -138,3 +138,8 @@ select{
 {
 	margin-left : 10px;
 }
+
+#_ajax_load_menu li._map_point_clicker
+{
+	display : none;
+}
