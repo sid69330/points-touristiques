@@ -1,0 +1,12 @@
+Touristix (à utiliser sous Chrome : erreur sur une fonction JSON sur Firefox)
+
+A faire avant d'utiliser l'application :
+- Un compte doit être crée avec la page inscription pour pouvoir se connecter à l'application.
+- se connecter avec les identifiants créés précédemment
+
+Fonctionnalités :
+- Affichage des points touristiques de Lyon par filtres dans le menu gauche
+- Un clic sur un marker présent sur la carte Google Maps permet de l'ajouter dans un nouveau parcours
+- Un nouveau parcours s'affiche en bas à droite de l'écran.
+- Il est possible d'enregistrer ce parcours pour pouvoir y accéder ultérieurement
+- Une page liste l'ensemble des parcours avec possibilité de les placer dans les favoris
