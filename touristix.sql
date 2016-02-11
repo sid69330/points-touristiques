@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 10, 2016 at 04:48 PM
+-- Generation Time: Feb 11, 2016 at 10:44 AM
 -- Server version: 5.6.28-0ubuntu0.15.04.1
 -- PHP Version: 5.6.4-4ubuntu6.4
 
@@ -32,7 +32,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `signin` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `login`, `password`, `mail`, `signin`) VALUES
+(1, 'sid', 'faa4014fc566e81c828cf29ade31a404f9f78cf7352886d73c35f8994fe9f8a8', 'alexandre.julien.91@gmail.com', '2016-02-10 15:51:21');
 
 -- --------------------------------------------------------
 
@@ -45,7 +52,8 @@ CREATE TABLE IF NOT EXISTS `walkthrough` (
   `name` varchar(30) NOT NULL,
   `createdat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `owner` int(11) unsigned NOT NULL,
-  `walkthrough` text NOT NULL
+  `walkthrough` text NOT NULL,
+  `favorite` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -72,7 +80,7 @@ ALTER TABLE `walkthrough`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `walkthrough`
 --

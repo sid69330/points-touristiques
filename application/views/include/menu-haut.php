@@ -37,6 +37,9 @@
 				<li id="categ_list" class="" onclick="cacherMenuCategorie()"><a href="#"><i class="fa fa-folder-open"></i> Catégories <span id="flecheCatMenu" style="float:right;margin-top:5px"></span></a></li>
 				<span id="_ajax_load_menu"></span>
 
+				<li id="parcours_favori" class=""><a href="#"><i class="fa fa-star"></i> Favoris <span class="badge">0</span></a></li>
+				
+
 			<?php if($this->session->userdata('connexion')['id'] != false)
 			{
 			?>
