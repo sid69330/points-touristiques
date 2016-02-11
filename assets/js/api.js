@@ -11,8 +11,9 @@ $(document).ready(function(){
 	cacherMenuCategorie();
 	cacherConstructionParcours(true);
 
-	$('#constructionParcours ul li .remove_point_lm').on('click', function(){
-		add_point_itineraire($(this).parent().data('id'));
+	$('#constructionParcours ul#listeConstructionParcours').on('click', '.remove_point_lm', function(){
+		console.log($(this).parent().data('id'));
+		add_point_itineraire($(this).parent().data('id'), true);
 	});
 
 });
@@ -40,10 +41,16 @@ function show_hide_cat(){
 	}
 }
 
-function add_point_itineraire(id){
+function add_point_itineraire(id, list){
 	var point_selector = $('#point_'+id+' .point_name');
 		name = point_selector.html();
 		button = $('#button_'+id);
+
+	if(list){
+		localStorage.removeItem(id);
+		update_point_list();
+		return;
+	}
 
 	if(button.hasClass('remove')){
 		localStorage.removeItem(id);
@@ -63,7 +70,9 @@ function update_point_list(){
 	list.html('');
 
 	$.each(localStorage, function(index, elem){
-		list.append('<li data-id="'+index+'">'+elem+'<span class="remove_point_lm"><i class="fa fa-times"></i></span></li>');
+		if($.isNumeric(index)){
+			list.append('<li data-id="'+index+'">'+elem+'<span class="remove_point_lm"><i class="fa fa-times"></i></span></li>');
+		}
 	});
 
 	badge.html(localStorage.length);

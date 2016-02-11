@@ -96,9 +96,9 @@
 				}
 
 				if(localStorage.getItem(temp[i]['id'])){
-					var buttonSubmit = "<button data-id='"+temp[i]['id']+"' id='button_"+temp[i]['id']+"' onclick=\"add_point_itineraire('"+temp[i]['id'].trim()+"');\" class='_add_to_itineraire remove'>Retirer</button>";
+					var buttonSubmit = "<button data-id='"+temp[i]['id']+"' id='button_"+temp[i]['id']+"' onclick=\"add_point_itineraire('"+temp[i]['id'].trim()+"', false);\" class='_add_to_itineraire remove'>Retirer</button>";
 				}else{
-					var buttonSubmit = "<button data-id='"+temp[i]['id']+"' id='button_"+temp[i]['id']+"' onclick=\"add_point_itineraire('"+temp[i]['id'].trim()+"');\" class='_add_to_itineraire'>Ajouter</button>";
+					var buttonSubmit = "<button data-id='"+temp[i]['id']+"' id='button_"+temp[i]['id']+"' onclick=\"add_point_itineraire('"+temp[i]['id'].trim()+"', false);\" class='_add_to_itineraire'>Ajouter</button>";
 				}
 
 				var contentString = "<div data-latitude='"+temp[i]['latitude']+"' data-longitude='"+temp[i]['longitude']+"' class='infowindow_content' id='point_"+temp[i]['id']+"'><div class='point_name' style='font-weight:bold;color:#08A12B'>"+temp[i]['name']+"</div><div class='point_detail' style='font-style:italic;'>"+temp[i]['detail'].replace(';', ', ')+"</div><div class='point_adress'>"+temp[i]['adress']+"</div><div class='point_zip_city'>"+temp[i]['zip']+" - "+temp[i]['city']+"</div><div>"+str_phones+"</div><div>"+str_email+"</div><div>"+str_facebook+"</div><div>"+buttonSubmit+"</div></div>";
