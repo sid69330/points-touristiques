@@ -443,11 +443,10 @@ $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 900;
 $config['csrf_regenerate'] = FALSE;
-<<<<<<< HEAD
+
 $config['csrf_exclude_uris'] = array();
-=======
-$config['csrf_exclude_uris'] = array('/markers');
->>>>>>> f3edc68a56c146923ffe889773ae65f650eb81a0
+
+
 
 /*
 |--------------------------------------------------------------------------
