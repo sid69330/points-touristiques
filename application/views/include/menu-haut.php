@@ -35,15 +35,15 @@
 			} ?>
 
 				<li id="categ_list" class="" onclick="cacherMenuCategorie()"><a href="#"><i class="fa fa-folder-open"></i> Catégories <span id="flecheCatMenu" style="float:right;margin-top:5px"></span></a></li>
-				<span id="_ajax_load_menu"></span>				
+				<span id="_ajax_load_menu"></span>
 
 			<?php if($this->session->userdata('connexion')['id'] != false)
 			{
 			?>
 				<?php if(uri_string() == '') { ?>
-					<li id="parcours_favori" class=""><a href="#"><i class="fa fa-star"></i> Favoris <span class="badge">0</span></a></li>
+					<li id="parcours_favori" class=""><a href="#"><i class="fa fa-star"></i> Favoris <span class="badge"><?php echo $nbParcoursFavori; ?></span></a></li>
 				<?php } ?>
-				<li><a href="/listeParcours"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge">0</span></a></li>
+				<li><a href="/listeParcours"><i class="fa fa-map-marker"></i> Mes parcours <span class="badge"><?php if(isset($nbParcours)) echo $nbParcours; ?></span></a></li>
 				<li ><a href="#" data-toggle="modal" data-target="#modalDeconnexion"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 			<?php
 			}
