@@ -5,7 +5,6 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<meta charset="utf-8">
 	<?php include_once($_SERVER['DOCUMENT_ROOT'].'/application/views/include/include_css.php'); ?>
-	<script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
 	<style>
 	  html, body {
 		height: 100%;
@@ -25,20 +24,27 @@
 	?>
 	<div id="constructionParcours">
 		<p onclick="cacherConstructionParcours()">Parcours actuel <span class="badge">0</span><span class="fleche"><i class="fa fa-angle-up"></i></span></p>
-		<ul id="listeConstructionParcours">
-			<li>Point 1</li>
-			<li>Point 2</li>
-			<li>Point 3</li>
-		</ul>
+		<div id="blocParcoursSave">
+			<ul id="listeConstructionParcours">
+			</ul>
+			<form id="formSaveParcours" style="width:100%">
+				<div class="col-xs-9" style="margin:0;padding:0">
+					<input type="text" id="nomParcoursSave" name="nomParcoursSave" placeholder="Nom du parcours" style="width:100%;height:25px" disabled="disabled"/>
+				</div>
+				<div class="col-xs-3" style="margin:0;padding:0">
+					<button type="button" id="btSaveParcours" class="btn btn-xs bt-jaune" style="width:100%;height:25px" disabled="disabled">Enregistrer</button>
+				</div>
+			</form>
+		</div>
 	</div>
 	<?php
 	}
 	?>
-
 	<div id="map"></div>
-	<script src="/assets/js/map.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABmaswDuz7-HVvHoHgrqYdmunESX84x9s&signed_in=true&callback=initMap" async defer></script>
 	<script type="text/javascript" src="/assets/js/jquery-1-11-2.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABmaswDuz7-HVvHoHgrqYdmunESX84x9s&signed_in=true&callback=initMap" async defer></script>
+	<script type="text/javascript" src="/assets/js/map.js"></script>
+	<script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
 	<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/assets/js/menu-haut.js"></script>
 	<script type="text/javascript" src="/assets/js/api.js"></script>

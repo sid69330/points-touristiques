@@ -40,6 +40,7 @@ class Parcours_json
 			return;
 
 		foreach($json->features as $key => $value){
+			$return[$i]['id'] = $value->properties->id;
 			$return[$i]['type'] = $value->properties->type;
 			$return[$i]['detail'] =  str_replace(["\'", '"'], '', $value->properties->type_detail);
 			$return[$i]['name'] = str_replace(["\'", '"'], '', $value->properties->nom);

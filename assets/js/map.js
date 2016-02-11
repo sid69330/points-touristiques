@@ -42,29 +42,8 @@
 		}
 
 
-		var _categories = get_categorie_mark();
-
-		_categories.success(function(categ){
-
-			$.each(categ, function(cat_key, cat_val){
-				window[cat_key] = [];
-				var _markers = get_marks();
-
-				_markers.success(function(markers){
-
-					$.each(markers, function(k, elem) {
-						
-						if(cat_key == elem.type){
-							window[cat_key].push({'mark': new google.maps.LatLng(elem.points.latitude, elem.points.longitude), 'name': elem.name, 'adress': elem.adress, 'zip': elem.zip, 'city': elem.city, 'phone': elem.phone, 'detail': elem.detail, 'email': elem.email, 'facebook': elem.facebook});
-						}
-
-					});
-
-				});
-
-			});
-
-		});
+		get_categorie_mark();
+			
 
 		$('._map_point_clicker').on('click', function(){
 			var type = $(this).data('value');
@@ -77,6 +56,10 @@
 				removeMarkers(type);
 			}
 
+		});
+
+		$('._map_point_clicker a').click(function(e){
+			e.preventDefault();
 		});
 
 		function addMarkers(filterType){
@@ -109,8 +92,14 @@
 				}else{
 					str_facebook = '';
 				}
-				var buttonSubmit = "<button class='_add_to_itineraire'>Ajouter</button>";
-				var contentString = "<div class='infowindow_content'><div style='font-weight:bold;color:#08A12B'>"+temp[i]['name']+"</div><div style='font-style:italic;'>"+temp[i]['detail'].replace(';', ', ')+"</div><div>"+temp[i]['adress']+"</div><div>"+temp[i]['zip']+" - "+temp[i]['city']+"</div><div>"+str_phones+"</div><div>"+str_email+"</div><div>"+str_facebook+"</div><div>"+buttonSubmit+"</div></div>";
+
+				if(localStorage.getItem(temp[i]['id'])){
+					var buttonSubmit = "<button data-id='"+temp[i]['id']+"' id='button_"+temp[i]['id']+"' onclick=\"add_point_itineraire('"+temp[i]['id'].trim()+"');\" class='_add_to_itineraire remove'>Retirer</button>";
+				}else{
+					var buttonSubmit = "<button data-id='"+temp[i]['id']+"' id='button_"+temp[i]['id']+"' onclick=\"add_point_itineraire('"+temp[i]['id'].trim()+"');\" class='_add_to_itineraire'>Ajouter</button>";
+				}
+
+				var contentString = "<div data-latitude='"+temp[i]['latitude']+"' data-longitude='"+temp[i]['longitude']+"' class='infowindow_content' id='point_"+temp[i]['id']+"'><div class='point_name' style='font-weight:bold;color:#08A12B'>"+temp[i]['name']+"</div><div class='point_detail' style='font-style:italic;'>"+temp[i]['detail'].replace(';', ', ')+"</div><div class='point_adress'>"+temp[i]['adress']+"</div><div class='point_zip_city'>"+temp[i]['zip']+" - "+temp[i]['city']+"</div><div>"+str_phones+"</div><div>"+str_email+"</div><div>"+str_facebook+"</div><div>"+buttonSubmit+"</div></div>";
 
 				var infowindow = new google.maps.InfoWindow({
 					content: contentString
@@ -155,7 +144,8 @@
 			dataType: 'json',
 			data: {},
 		}).done(function(data){
-
+			window['categorie'] = data;
+			get_marks();
 		});
 	}
 
@@ -165,7 +155,20 @@
 			type: 'GET',
 			dataType: 'json',
 			data: {},
-		}).done(function(data){
-			return data;
+		}).done(function(res){
+			window['marker'] = res;
+			$.each(window['categorie'], function(cat_key, cat_val){
+				window[cat_key] = [];
+				
+
+					$.each(window['marker'], function(k, elem){
+						
+						if(cat_key == elem.type){
+							window[cat_key].push({latitude: elem.points.latitude, longitude: elem.points.longitude, 'mark': new google.maps.LatLng(elem.points.latitude, elem.points.longitude), 'name': elem.name, 'adress': elem.adress, 'zip': elem.zip, 'city': elem.city, 'phone': elem.phone, 'detail': elem.detail, 'email': elem.email, 'facebook': elem.facebook, 'id': elem.id});
+						}
+
+					});
+
+			});
 		});
 	}

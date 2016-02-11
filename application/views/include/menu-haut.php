@@ -34,7 +34,7 @@
 			<?php
 			} ?>
 
-				<li class="" onclick="cacherMenuCategorie()"><a href="#"><i class="fa fa-folder-open"></i> Catégories <span id="flecheCatMenu" style="float:right;margin-top:5px"></span></a></li>
+				<li id="categ_list" class="" onclick="cacherMenuCategorie()"><a href="#"><i class="fa fa-folder-open"></i> Catégories <span id="flecheCatMenu" style="float:right;margin-top:5px"></span></a></li>
 				<span id="_ajax_load_menu"></span>
 
 			<?php if($this->session->userdata('connexion')['id'] != false)
