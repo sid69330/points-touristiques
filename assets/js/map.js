@@ -10,7 +10,7 @@
 		var directionsDisplay = new google.maps.DirectionsRenderer({ // Service Google Maps API d'affichage de l'itineraire sur la map
 				draggable: true,
 			 	map: map
-			);
+			});
 
 	directionsDisplay.addListener('directions_changed', function() { // Ecoute un changement d'itineraire pour le changer dynamiquement sur la map
 		computeTotalDistance(directionsDisplay.getDirections());
