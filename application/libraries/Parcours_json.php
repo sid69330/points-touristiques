@@ -1,6 +1,8 @@
 <?php
 if(!defined('BASEPATH')) exit('No direct script access allowed');
-
+/*
+	Controlleur permettant de parser le fichier JSON présent en local (JSON récupérer en CRON quotidiennement)
+*/
 class Parcours_json
 {
 	public function get_categ(){

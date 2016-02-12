@@ -1,5 +1,7 @@
 <?php
-
+/*
+    Controleur permettant de récupérer les parcours enregistré pour la personne connectée dans le menu gauche
+*/
 class LoadParcours extends CI_Controller
 {   
     protected $menuOnglet;
