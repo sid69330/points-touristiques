@@ -58,29 +58,36 @@ $(document).ready(function(){
 
 	$('#_ajax_load_parcours').on('click', '._map_point_parcours_update', function(){
 		var points = [];
+			latLast = '';
+			lonLast = '';
 			start = window['center'];
 			$this = $(this);
 			span = $this.children('span');
-			console.log(span);
+		
 
+		var i = 1;
 		$(span).each(function(index, elem){
 			var lat = $(this).data('latitude');
 				lon = $(this).data('longitude');
 
 			if(index+1 != span.length){
+
 				points.push({
 					location: new google.maps.LatLng(lat, lon),
 					stopover: true
 				});
+			}else{
+				latLast = $(this).data('latitude');
+				lonLast = $(this).data('longitude');
 			}
 
 		});
-		console.log(JSON.parse(localStorage.getItem(idLast)).lat);
-		console.log(JSON.parse(localStorage.getItem(idLast)).lon);
+
+		console.log(latLast);
 
 		window['directionsService'].route({
 			origin: window['center'],
-			destination: new google.maps.LatLng(JSON.parse(localStorage.getItem(idLast)).lat, JSON.parse(localStorage.getItem(idLast)).lon),
+			destination: new google.maps.LatLng(latLast, lonLast),
 			waypoints: points,
 			optimizeWaypoints: true,
 			travelMode: google.maps.TravelMode.DRIVING
@@ -149,7 +156,7 @@ function get_parcours(){
 		$('#MyParcours .badge').html(data.nbParcours);
 		$.each(data.result, function(key, elem){
 			var arr = JSON.parse(elem.parcours);
-			console.log(arr);
+
 			menu.append('<li data-name="'+elem.name+'" class="_map_point_parcours_update" id="parcoursList'+elem.id+'" style="display:none;">');
 
 			$.each(arr, function(a, b){
