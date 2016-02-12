@@ -1,5 +1,7 @@
 <?php
-
+/*
+    Controlleur permettant de mettre et retirer un parcours de ses favoris (page non accessible depuis l'accueil car finalement non intégrée)
+*/
 class Createfav extends CI_Controller
 {   
         protected $menuOnglet;

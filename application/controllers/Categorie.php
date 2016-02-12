@@ -1,5 +1,7 @@
 <?php
-
+/*
+	Controleur permettant de récupérer les catégories présentes dans le menu gauche
+*/
 class Categorie extends CI_Controller
 {
 

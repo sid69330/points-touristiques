@@ -1,5 +1,7 @@
 <?php
-
+/*
+	Controleur permettant de récupérer l'ensemble des marqueurs présents sur la page d'accueil sur la maps google maps
+*/
 class Markers extends CI_Controller
 {
 
