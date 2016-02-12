@@ -112,7 +112,7 @@ $(document).ready(function(){
 			data: {points:JSON.stringify(idPoints), libelle:libelle},
 		}).done(function(data){
 			if(data == 0)
-				document.location.href = '/listeParcours';
+				document.location.href = '/';
 		})
 		.fail(function() {
 			console.log("error");
@@ -150,13 +150,13 @@ function get_parcours(){
 		$.each(data.result, function(key, elem){
 			var arr = JSON.parse(elem.parcours);
 			console.log(arr);
-			menu.append('<li data-name="'+elem.name+'" class="_map_point_parcours_update" id="parcoursList'+elem.name+'" style="display:none;">');
+			menu.append('<li data-name="'+elem.name+'" class="_map_point_parcours_update" id="parcoursList'+elem.id+'" style="display:none;">');
 
 			$.each(arr, function(a, b){
-				$('li#parcoursList'+elem.name).append('<span data-id="'+b.id+'" data-latitude="'+b.latitude+'" data-longitude="'+b.longitude+'" style="display:none;"></span>');
+				$('li#parcoursList'+elem.id).append('<span data-id="'+b.id+'" data-latitude="'+b.latitude+'" data-longitude="'+b.longitude+'" style="display:none;"></span>');
 			})
 
-			$('li#parcoursList'+elem.name).append('<a href="#" style="color:#59AEE4;">'+elem.name+'</a></li>');
+			$('li#parcoursList'+elem.id).append('<a href="#" style="color:#59AEE4;">'+elem.name+'</a></li>');
 		});
 	})
 	.fail(function() {
