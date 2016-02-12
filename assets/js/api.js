@@ -119,7 +119,7 @@ $(document).ready(function(){
 			data: {points:JSON.stringify(idPoints), libelle:libelle},
 		}).done(function(data){
 			if(data == 0)
-				document.location.href = '/listeParcours';
+				document.location.href = '/';
 		})
 		.fail(function() {
 			console.log("error");
