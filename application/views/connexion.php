@@ -15,7 +15,7 @@
     <div class="container">
         <h1 class="titrePage">Connexion</h1>
         
-        <?php echo form_open('connexion',array('class' => 'form-horizontal')); ?>
+        <?php echo form_open('/connexion',array('class' => 'form-horizontal')); ?>
             <?php if(isset($erreur) && ($erreur != '')) echo "<p class='alert alert-danger'>".$erreur."</p>"; ?>
             <?php echo form_error('pseudo', '<div class="alert alert-danger">', '</div>'); ?>
             <div class="form-group">
