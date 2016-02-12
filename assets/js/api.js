@@ -163,7 +163,7 @@ function get_parcours(){
 				$('li#parcoursList'+elem.id).append('<span data-id="'+b.id+'" data-latitude="'+b.latitude+'" data-longitude="'+b.longitude+'" style="display:none;"></span>');
 			})
 
-			$('li#parcoursList'+elem.id).append('<a href="#" style="color:#59AEE4;">'+elem.name+'</a></li>');
+			$('li#parcoursList'+elem.id).append('<a href="#" style="color:#59AEE4;">- '+elem.name+'</a></li>');
 		});
 	})
 	.fail(function() {

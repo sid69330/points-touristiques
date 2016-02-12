@@ -143,3 +143,15 @@ select{
 {
 	display : none;
 }
+
+._map_point_parcours_update a
+{
+	color : white !important;
+	padding-left : 35px;
+	font-size : 12px !important;
+}
+
+._map_point_parcours_update a:hover
+{
+	color : yellow !important;
+}
